@@ -57,7 +57,7 @@ public void search()
     String v=new Scanner(System.in).next();
     for(int i=0;i<m;i++)
     {
-        if(v.equals(vot[i]))
+        if(v.equalsIgnoreCase(vot[i]))
         {
         	flag=1;
 
