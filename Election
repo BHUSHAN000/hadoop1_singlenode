@@ -1,0 +1,126 @@
+import java.util.*;
+class Elec
+{
+String can[]=new String[50];
+String vot[]=new String[50];
+int count[]=new int[50];
+int sum[]=new int[50];
+int flag2[]=new int[5];
+int n,m;
+public void addC()
+{
+    System.out.println("Enter the no of candidate");
+    n=new Scanner(System.in).nextInt();
+    for(int i=0;i<n;i++)
+    {
+        System.out.println("Enter the name of "+(i+1)+" candidate");
+        can[i]=new Scanner(System.in).next();
+    }
+    for(int i=0;i<n;i++)
+    {
+        sum[i]=0;
+    }
+    for(int i=0;i<n;i++)
+    {
+        count[i]=0;
+    }
+}
+
+public void addV()
+{
+    System.out.println("Enter the no of Voter");
+    m=new Scanner(System.in).nextInt();
+    for(int i=0;i<m;i++)
+    {
+        System.out.println("Enter the name of "+(i+1)+" voter");
+        vot[i]=new Scanner(System.in).next();   
+    }
+
+}
+
+public void disp()
+{
+    for(int i=0;i<n;i++)
+    {   
+        System.out.println("Candidate name is= "+can[i]+"\n");
+    }
+    for(int i=0;i<m;i++)
+    {
+        System.out.println("Voter name is= "+vot[i]+"\n");
+    }
+}
+
+public void search()
+{
+    int flag=0;
+    System.out.println("Enter the voter name");
+    String v=new Scanner(System.in).next();
+    for(int i=0;i<m;i++)
+    {
+        if(v.equals(vot[i]))
+        {
+        	flag=1;
+
+		if(flag2[i]!=1)
+		{
+			flag2[i]=1;
+        		System.out.println("choose the candidate whom you want to vote");
+        		for(int j=0;j<n;j++)
+        		{
+        			System.out.println((j+1)+". "+can[j]);
+        		}
+        		int nn=new Scanner(System.in).nextInt();
+        		count[nn-1]=sum[nn-1]+1;
+		}
+		else
+		{
+			System.out.println("Already given a vote");
+		}
+        }
+   
+    }
+    if(flag==0)
+    {System.out.println("Voter not valid");}
+}
+
+public void res()
+{
+    for(int i=0;i<n;i++)
+    {
+    System.out.println("Cadidate- "+can[i]+" got "+count[i]+" votes");
+    }
+}
+   
+public static void main(String ar[])
+{
+    Elec ee=new Elec();
+    char chh='n';   
+    while(chh!='Y'||chh!='y')
+    {
+    System.out.println("Please enter ur choice...\n");
+    System.out.println("1.Insert candidate data\n2.Insert voter data \n3.Display Data\n4.Give a Vote\n5.Result\n6.Exit");
+    int ch=new Scanner(System.in).nextInt();
+    switch(ch)
+    {
+    case 1: ee.addC();
+            break;
+    case 2: ee.addV();
+    		break;	
+    case 3: ee.disp();
+    		break;
+    case 4: ee.search();
+            break;
+    case 5: ee.res();
+    		break;
+    case 6: System.exit(0);
+    }
+   
+   
+    System.out.println("Do u want to exit???....y or n \n");
+    chh=new Scanner(System.in).next().charAt(0);
+    if(chh=='y' || chh=='Y')
+    {
+        System.exit(0);
+    }
+}
+}}
